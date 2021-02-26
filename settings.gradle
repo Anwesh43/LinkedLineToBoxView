@@ -1,0 +1,3 @@
+include ':linkedlinetoendboxview'
+include ':app'
+rootProject.name = "Linked"
