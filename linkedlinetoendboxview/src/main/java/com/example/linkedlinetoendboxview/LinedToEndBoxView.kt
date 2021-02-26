@@ -125,4 +125,45 @@ class LinedToEndBoxView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LTEBNode(var i : Int, val state : State = State()) {
+
+        private var next : LTEBNode? = null
+        private var prev : LTEBNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LTEBNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLTEBNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LTEBNode {
+            var curr : LTEBNode? = prev
+            if (dir == 1) {
+                curr = this
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
