@@ -214,4 +214,13 @@ class LinedToEndBoxView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LinedToEndBoxView {
+            val view : LinedToEndBoxView = LinedToEndBoxView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
