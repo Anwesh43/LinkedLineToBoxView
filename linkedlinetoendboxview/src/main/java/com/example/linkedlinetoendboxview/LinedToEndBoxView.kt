@@ -48,7 +48,7 @@ fun Canvas.drawLinedToEndBox(scale : Float, w : Float, h : Float, paint : Paint)
         save()
         scale(1f - 2 * j, 1f - 2 * j)
         translate(-w / 2 + size / 2, 0f)
-        drawRect(RectF(-size * 0.5f * sf2, -size * 0.5f * sf2, size * sf2, size * sf3), paint)
+        drawRect(RectF(size * 0.5f - size * sf2, -size * 0.5f, size * 0.5f, size * 0.5f), paint)
         restore()
     }
     restore()
